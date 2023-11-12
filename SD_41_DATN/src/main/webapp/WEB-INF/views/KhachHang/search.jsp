@@ -6,19 +6,22 @@
 <br>
 <form:form modelAttribute="searchKH" method="post" action="/KhachHang/list">
     <p>
-<%--        <lable>--%>
-<%--            Search:--%>
-<%--        </lable>--%>
+            <%--        <lable>--%>
+            <%--            Search:--%>
+            <%--        </lable>--%>
         <form:input path="keyword"/>
-    <button class="btn btn-primary" type="submit">Search</button>
+        <button class="btn btn-primary" type="submit">Search</button>
+        <a href="${pageContext.request.contextPath}/KhachHang/list">
+            <button class="btn btn-primary">Back</button>
+        </a>
     </p>
-<%--    <p>--%>
-<%--        <form:select path="tenKhachHang" onchange="getTen(this.value)">--%>
-<%--        <form:option value="">-------</form:option>--%>
-<%--            <form:options  items="${listPage}" itemValue="tenKhachHang" itemLabel="tenKhachHang"/>--%>
-<%--        </form:select>--%>
-<%--    <div id="tenHang"></div>--%>
-<%--    </p>--%>
+    <%--    <p>--%>
+    <%--        <form:select path="tenKhachHang" onchange="getTen(this.value)">--%>
+    <%--        <form:option value="">-------</form:option>--%>
+    <%--            <form:options  items="${listPage}" itemValue="tenKhachHang" itemLabel="tenKhachHang"/>--%>
+    <%--        </form:select>--%>
+    <%--    <div id="tenHang"></div>--%>
+    <%--    </p>--%>
 </form:form>
 <script>
     <%--var data = {--%>

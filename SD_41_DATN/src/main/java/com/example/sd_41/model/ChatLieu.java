@@ -1,9 +1,13 @@
 package com.example.sd_41.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SecondaryRow;
 
+import java.sql.Date;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -16,23 +20,27 @@ import java.util.UUID;
 public class ChatLieu {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "Id_ChatLieu")
-    private UUID id;
+    @GenericGenerator(name = "generator",strategy = "guid",parameters = {})
+    @GeneratedValue(generator = "generator")
+    @Column(name = "Id_ChatLieu",columnDefinition = "UNIQUEIDENTIFIER")
+    private String id;
 
-    @Column(name = "tenChatLieu")
-    private String tenChatLieu;
+    @NotBlank(message = "Không được để trống")
+    @Column(name = " tenChatLieu")
+    private  String  tenChatLieu	;
 
+    @NotBlank(message = "Không được để trống")
     @Column(name = "ghiChu")
     private String ghiChu;
 
+    @NotNull(message = "Ngày không được trống")
     @Column(name = "ngayTao")
-    private String ngayTao;
+    private java.sql.Date ngayTao;
 
+    @NotNull(message = "Ngày không được trống")
     @Column(name = "ngaySua")
-    private String ngaySua;
+    private Date ngaySua;
 
     @Column(name = "trangThai")
     private int trangThai;
-
 }

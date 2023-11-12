@@ -61,7 +61,7 @@ public class GiayTheThaoPDFController {
             table.addCell(giayTheThaoChiTiet.getGiayTheThao().getTenGiayTheThao());
             table.addCell(giayTheThaoChiTiet.getGiayTheThao().getGiaBan());
             table.addCell(giayTheThaoChiTiet.getSoLuong());
-            table.addCell(giayTheThaoChiTiet.getSize().getSize());
+            table.addCell(String.valueOf(giayTheThaoChiTiet.getSize().getSz()));
             table.addCell(giayTheThaoChiTiet.getMauSac().getTenMauSac());
             table.addCell(giayTheThaoChiTiet.getGiayTheThao().getCongDung().getTenCongDung());
             table.addCell(giayTheThaoChiTiet.getGiayTheThao().getThuongHieu().getTenThuongHieu());

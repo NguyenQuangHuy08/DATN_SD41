@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 
 <!doctype html>
 <html lang="en">
@@ -12,54 +12,192 @@
     <style>
 
     </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
+<style>
+    <%--        Dành cho tab--%>
+    .nav-tabs {
+        background-image: linear-gradient(
+                to bottom right, #25AEB8, #0DDB9F
+        );
+        padding: 0;
+        margin: 20px 0 0;
+        list-style: none;
+        width: 500px;
+        height: 40px;
+        display: flex;
+        /*max-width: fit-content;*/
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+    .nav-item {
+        font-weight: bold;
+        font-size: 15px;
+        width: 140px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        height: 20px;
+        text-align: center;
+        border-right: 1px solid #1d868d;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+    .nav-item:nth-last-child(1) {
+        border-right: none;
+    }
+
+    .nav-item.active {
+        color: #555;
+    }
+
+    .bg-active {
+        background-color: #eee;
+        padding: 20px;
+        width: 140px;
+        position: absolute;
+        left: 0;
+        height: 100%;
+        z-index: -1;
+        transition: 0.5s;
+    }
+
+    .content-tabs {
+        padding: 30px;
+        background-color: #eee;
+        color: #555;
+        border-radius: 10px;
+        border-top-left-radius: 0;
+        min-height: 300px;
+        text-align: justify;
+    }
+
+    .content-tabs .tab {
+        display: none;
+    }
+
+    .content-tabs .tab.active {
+        display: block;
+        animation: showContent 0.5s ease-in-out 1;
+    }
+
+    @keyframes showContent {
+        from {
+            opacity: 0;
+            transform: translateY(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    <%--        Danh cho giá bán--%>
+
+    #priceSlider {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    #giaBan {
+        height: 10px;
+        margin: 10px 0;
+    }
+
+    #priceSlider .noUi-handle {
+        width: 20px;
+        border-radius: 20px 20px 20px;
+        background-color: aliceblue;
+        height: 20px;
+        cursor: ew-resize;
+    }
+
+    /*    Table */
+    td, th {
+        padding: 10px; /* Khoảng cách nội dung bên trong ô */
+        color: black; /* Màu chữ */
+        text-align: center; /* Căn giữa nội dung trong ô */
+    }
+
+    .hide-row {
+        display: none;
+    }
+
+</style>
+
 <body>
 <div class="container">
     <h3 style="text-align: center;">List Khách Hàng </h3>
     <br>
-    <jsp:include page="search.jsp"></jsp:include>
-<%--    <div class="" style="margin-top: 30px; margin-bottom: 30px">--%>
-<%--    <h1>Tìm kiếm sản phẩm</h1>--%>
-<%--        <form action="${pageContext.request.contextPath}/ChuongTrinhGiamGiaHoaDon/search" method="GET">--%>
-<%--            <label for="tenChuongTrinh">Tên chương trình </label>--%>
-<%--            <input style="width: 400px" type="text" id="tenChuongTrinh" name="tenChuongTrinh">--%>
-<%--            <br>--%>
-<%--            <label for="soLuongSanPham">Số lượng sản phẩm :</label>--%>
-<%--            <input type="number" id="soLuongSanPham" name="soLuongSanPham">--%>
-<%--            <br>--%>
-<%--            <label for="phanTramGiam">Phần trăm giảm :</label>--%>
-<%--            <input type="number" id="phanTramGiam" name="phanTramGiam">--%>
-<%--            <br>--%>
-<%--            <label for="soTienHoaDon">Số tiền hóa đơn cần đạt :</label>--%>
-<%--            <input type="number" id="soTienHoaDon" name="soTienHoaDon">--%>
-<%--            <br>--%>
-<%--            <button type="submit">Tìm kiếm</button>--%>
-<%--        </form>--%>
-<%--    </div>--%>
+    <br>
+    <input type="text" class="form-control bg-light border-0 small" placeholder="Tìm kiếm:" aria-label="Search"
+           aria-describedby="basic-addon2">
 
-<%--    <a href="/ChuongTrinhGiamGiaHoaDon/list">--%>
-<%--        <button>Back</button>--%>
-<%--    </a>--%>
-<%--    <div class="thongBao">--%>
-<%--&lt;%&ndash;           Tìm kiếm thành công &ndash;%&gt;--%>
-<%--            <label>${messageDone}</label>--%>
-<%--&lt;%&ndash;            Không tìm thấy id có mã&ndash;%&gt;--%>
-<%--            <label>${messageFind}</label>--%>
-<%--            Không tìm thầy sản phẩm--%>
-<%--            <label>${messageErFind}</label>--%>
-<%--            <label>${message}</label>--%>
-<%--            <label>${messageErFindSoLuong}</label>--%>
+    <form action="${pageContext.request.contextPath}/KhachHang/search" method="GET">
+        <%--        <label for="tenMauSac" style="margin-left: 30px">Tên màu sắc </label>--%>
+        <input style="width: 400px" type="text" id="tenKhachHang1" name="tenKhachHang">
+        <%--        <br>--%>
+        <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+        <h6 style="color: red; margin-top: 10px">${messageFindDone}</h6>
+        <h6 style="color: red; margin-top: 10px">${messageFindError}</h6>
+        <h6 style="color: red; margin-top: 10px">${messageFind}</h6>
+    </form>
+    <br>
+    <br>
+    <div class="row">
+        <h3 style="margin-top: 5px; color: black; margin-bottom: 20px">Lọc</h3>
+        <div class="common-filter">
+            <form id="filter-form">
+                <div class="row">
+                    <div class="col-6">
+                        <h6 style="color:black">Tên khách hàng</h6>
+                        <input style="width: 500px; height: 35px;border-radius: 5px 5px 5px" type="text"
+                               id="tenKhachHang" placeholder="Tên khách hàng">
+                    </div>
+                    <div class="col-6">
+                        <h6 style="color:black">Email</h6>
+                        <input style="width: 500px; height: 35px;border-radius: 5px 5px 5px" type="text" id="email"
+                               placeholder="Email">
+                    </div>
+                    <div class="col-6">
+                        <h6 style="color:black">Số điện thoại</h6>
+                        <input style="width: 500px; height: 35px;border-radius: 5px 5px 5px" type="text"
+                               id="soDienThoai" placeholder="Số điện thoại">
+                    </div>
+                    <div class="col-6">
+                        <h6 style="color:black">Địa chỉ</h6>
+                        <input style="width: 500px; height: 35px;border-radius: 5px 5px 5px" type="text" id="diaChi"
+                               placeholder="Địa chỉ">
+                    </div>
+                </div>
+            </form>
+            <div>
 
-<%--    </div>--%>
+            </div>
+        </div>
+    </div>
 
-    <div><a href="${pageContext.request.contextPath}/KhachHang/view-create" class="btn btn-primary">Thêm khách hàng</a></div>
+    <br>
+    <br>
 
+    <div><a href="${pageContext.request.contextPath}/KhachHang/view-create" class="btn btn-primary">Thêm sản phẩm</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">STT</th>
             <th scope="col">Tên khách hàng</th>
             <th scope="col">Email</th>
             <th scope="col">Mật khẩu</th>
@@ -74,35 +212,186 @@
         </thead>
         <tbody>
         <c:forEach var="kh" items="${listPage}" varStatus="i">
-            <tr>
-                <th style="padding-top: 40px" scope="row">${i.index+1}</th>
-                <td style="padding-top: 55px; text-align: center">${kh.tenKhachHang}</td>
-                <td style="padding-top: 55px; text-align: center">${kh.email}</td>
-                <td style="padding-top: 55px; text-align: center">${kh.matKhau}</td>
-                <td style="padding-top: 55px; text-align: center">${kh.gioiTinh}</td>
-                <td style="padding-top: 55px; text-align: center">${kh.ngaySinh}</td>
-                <td style="padding-top: 55px; text-align: center">${kh.soDienThoai}</td>
-                <td style="padding-top: 55px; text-align: center">${kh.diaChi}</td>
-                <td style="padding-top: 55px; text-align: center">${kh.ghiChu}</td>
-                <td style="padding-top: 55px; text-align: center">${hd.trangThai==1 ?"Không hoạt động" : "Còn hoạt động"}</td>
+            <tr class="product-item hide-row" data-tenKhachHang="${kh.tenKhachHang}" data-email="${kh.email}"
+                data-soDienThoai="${kh.soDienThoai}" data-diaChi="${kh.diaChi}">
+                <th style="">${i.index+1}</th>
+                <td style="">${kh.tenKhachHang}</td>
+                <td style="">${kh.email}</td>
+                <td style="">${kh.matKhau}</td>
+                <td style="">${kh.gioiTinh}</td>
+                <td style="">${kh.ngaySinh}</td>
+                <td style="">${kh.soDienThoai}</td>
+                <td style="">${kh.diaChi}</td>
+                <td style="">${kh.ghiChu}</td>
+                <td style="">${kh.trangThai==1 ?"Còn hoạt động ✔" : "Không còn hoạt động ✖"}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/KhachHang/edit/${kh.id}"><button class="btn btn-primary">Edit</button></a>
-                    <a href="${pageContext.request.contextPath}/KhachHang/delete/${kh.id}" class="btn btn-danger">Delete</a>
+                    <a href="${pageContext.request.contextPath}/KhachHang/edit/${kh.id}">
+                        <button class="btn btn-primary">Edit</button>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/KhachHang/delete/${kh.id}"
+                       class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    <ul class="pagination" style="margin-left: 500px">
-        <c:forEach begin="1" end="${totalPage}" varStatus="status">
-            <li class="page-item">
-                <a href="${pageContext.request.contextPath}/KhachHang/list?pageNumber=${status.index}" class="page-link">${status.index}</a>
-            </li>
-        </c:forEach>
-    </ul>
+    <div id="noResults" class="alert alert-warning" style="display: none;margin-top: 10px">
+        <h5 style="text-align: center;height: 60px;margin-top: 40px">Không có dữ liệu phù hợp với bộ lọc hiện tại!</h5>
+    </div>
+    <div class="row">
+        <div class="col-12" style="">
+            <%--            --%>
+            <%--            <ul class="pagination" style="margin-left: 400px">--%>
+            <%--                <c:choose>--%>
+            <%--                    <c:when test="${currentPage > 1}">--%>
+            <%--                        <li class="page-item">--%>
+            <%--                            <a href="/MauSac/list?pageNum=${currentPage - 1}&tab=active" class="page-link" style="border: 1px solid red;width: 100px">Previous</a>--%>
+            <%--                        </li>--%>
+            <%--                    </c:when>--%>
+            <%--                    <c:otherwise>--%>
+            <%--                        <!-- Ẩn nút "Previous" khi trang hiện tại là trang đầu tiên -->--%>
+            <%--                    </c:otherwise>--%>
+            <%--                </c:choose>--%>
+
+            <%--                <c:forEach var="pageNumber" items="${pageNumbers}">--%>
+            <%--                    <li class="page-item ${pageNumber == currentPage ? 'active' : ''}">--%>
+            <%--                        <a href="/MauSac/list?pageNum=${pageNumber}&tab=active" class="page-link">${pageNumber}</a>--%>
+            <%--                    </li>--%>
+            <%--                </c:forEach>--%>
+
+            <%--                <c:if test="${currentPage < totalPage}">--%>
+            <%--                    <li class="page-item">--%>
+            <%--                        <a href="/MauSac/list?pageNum=${currentPage + 1}&tab=active" class="page-link" style="border: 1px solid red; width: 50px">Next</a>--%>
+            <%--                    </li>--%>
+            <%--                </c:if>--%>
+            <%--            </ul>--%>
+
+            <%--    <ul class="pagination" style="margin-left: 500px">--%>
+            <%--        <c:choose>--%>
+            <%--            <c:when test="${currentPage > 1}">--%>
+            <%--                <li class="page-item">--%>
+            <%--                    <a href="${pageContext.request.contextPath}/MauSac/list?pageNum=${currentPage - 1}" class="page-link">Previous</a>--%>
+            <%--                </li>--%>
+            <%--            </c:when>--%>
+            <%--            <c:otherwise>--%>
+            <%--                <li class="page-item disabled">--%>
+            <%--                    <span class="page-link">Previous</span>--%>
+            <%--                </li>--%>
+            <%--            </c:otherwise>--%>
+            <%--        </c:choose>--%>
+
+            <%--        <c:forEach var="pageNumber" items="${pageNumbers}">--%>
+            <%--            <li class="page-item ${pageNumber == currentPage ? 'active' : ''}">--%>
+            <%--                <a href="${pageContext.request.contextPath}/MauSac/list?pageNum=${pageNumber}" class="page-link">${pageNumber}</a>--%>
+            <%--            </li>--%>
+            <%--        </c:forEach>--%>
+
+            <%--        <c:if test="${currentPage < totalPage}">--%>
+            <%--            <li class="page-item">--%>
+            <%--                <a href="${pageContext.request.contextPath}/MauSac/list?pageNum=${currentPage + 1}" class="page-link">Next</a>--%>
+            <%--            </li>--%>
+            <%--        </c:if>--%>
+            <%--    </ul>--%>
+
+
+            <ul class="pagination" style="margin-left: 400px">
+                <c:choose>
+                    <c:when test="${currentPage > 1}">
+                        <li class="page-item">
+                            <a href="/KhachHang/list?pageNum=${currentPage - 1}" class="page-link"
+                               style="border: 1px solid red;width: 100px">Previous</a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <!-- Ẩn nút "Previous" khi trang hiện tại là trang đầu tiên -->
+                    </c:otherwise>
+                </c:choose>
+
+                <c:forEach var="pageNumber" items="${pageNumbers}">
+                    <li class="page-item ${pageNumber == currentPage}">
+                        <a href="/KhachHang/list?pageNum=${pageNumber}" class="page-link">${pageNumber}</a>
+                    </li>
+                </c:forEach>
+
+                <c:if test="${currentPage < totalPage}">
+                    <li class="page-item">
+                        <a href="/KhachHang/list?pageNum=${currentPage + 1}" class="page-link"
+                           style="border: 1px solid red; width: 50px">Next</a>
+                    </li>
+                </c:if>
+            </ul>
+
+
+        </div>
+    </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    var filterForm = document.getElementById('filter-form');
+    var searchPerformed = false; // Tạo biến để kiểm tra xem tìm kiếm đã được thực hiện hay chưa
+
+    filterForm.addEventListener('input', function () {
+        var tenKhachHang = document.getElementById('tenKhachHang').value.toLowerCase();
+        var email = document.getElementById('email').value.toLowerCase();
+        var soDienThoai = document.getElementById('soDienThoai').value.toLowerCase();
+        var diaChi = document.getElementById('diaChi').value.toLowerCase();
+
+        var products = document.getElementsByClassName('product-item');
+
+        for (var i = 0; i < products.length; i++) {
+            var product = products[i];
+
+            var productTenKhachHang = product.getAttribute('data-tenKhachHang').toLowerCase();
+            var productEmail = product.getAttribute('data-email').toLowerCase();
+            var productSoDienThoai = product.getAttribute('data-soDienThoai').toLowerCase();
+            var productDiaChi = product.getAttribute('data-diaChi').toLowerCase();
+
+            if (productTenKhachHang.includes(tenKhachHang) &&
+                productEmail.includes(email) &&
+                productSoDienThoai.includes(soDienThoai) &&
+                productDiaChi.includes(diaChi)) {
+
+                product.classList.remove('hide-row'); // Loại bỏ lớp ẩn
+
+            } else {
+
+                product.classList.add('hide-row'); // Thêm lớp ẩn
+
+            }
+        }
+
+        var noResultsMessage = document.getElementById('noResults');
+        if (anyResults) {
+            noResultsMessage.style.display = 'none'; // Ẩn thông báo
+        } else {
+            noResultsMessage.style.display = 'block'; // Hiển thị thông báo
+        }
+        // Đặt biến searchPerformed thành true khi người dùng thực hiện tìm kiếm
+        searchPerformed = true;
+
+    });
+
+    // Trước khi kích hoạt tìm kiếm, kiểm tra xem searchPerformed đã được thiết lập thành true hay chưa
+    if (!searchPerformed) {
+        var initialProducts = document.getElementsByClassName('product-item');
+        for (var i = 0; i < initialProducts.length; i++) {
+
+            initialProducts[i].classList.remove('hide-row'); // Loại bỏ lớp ẩn
+
+        }
+    }
+
+
+</script>
 </body>
 </html>

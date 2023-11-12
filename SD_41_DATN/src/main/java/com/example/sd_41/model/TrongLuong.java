@@ -33,15 +33,16 @@ public class TrongLuong {
     @Column(name = "ghiChu")
     private String ghiChu;
 
-    @NotNull(message = "Ngày không được trống")
+    @NotBlank(message = "Không được để trống")
     @Column(name = "ngayTao")
-    private Date ngayTao;
+    private String ngayTao;
 
-    @NotNull(message = "Ngày không được trống")
+    @NotBlank(message = "Không được để trống")
     @Column(name = "ngaySua")
-    private Date ngaySua;
+    private String ngaySua;
 
+    @NotBlank(message = "Không được để trống")
     @Column(name = "trangThai")
-    private int trangThai;
+    private String trangThai;
 
 }

@@ -49,10 +49,9 @@ public class User {
     private  String gioiTinh	;
 
 
-    @NotNull(message = "Ngày không được trống")
-//    @DateTimeFormat(pattern = "mm-dd-yyyy")
+    @NotBlank(message = "Không được để trống")
     @Column(name = "ngaySinh")
-    private java.sql.Date ngaySinh	;
+    private String ngaySinh	;
 
     @NotBlank(message = "Không được để trống")
     @Column(name = "maCCCD")
@@ -75,17 +74,16 @@ public class User {
     private String ghiChu;
 
 
-    @NotNull(message = "Ngày không được trống")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotBlank(message = "Không được để trống")
     @Column(name = "ngayTao")
-    private java.sql.Date ngayTao;
+    private String ngayTao;
 
 
-    @NotNull(message = "Ngày không được trống")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotBlank(message = "Không được để trống")
     @Column(name = "ngaySua")
-    private Date ngaySua;
+    private String ngaySua;
 
+    @NotBlank(message = "Không được để trống")
     @Column(name = "trangThai")
-    private Integer trangThai;
+    private String trangThai;
 }

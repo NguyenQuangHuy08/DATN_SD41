@@ -20,10 +20,10 @@ public class ChuongTrinhGiamGiaGiayTheThao {
     private UUID id;
 
     @Column(name = "tenChuongTrinhGiamGia")
-    private String tenChuongTrinhGiamGia;
+    private String tenChuongTrinh;
 
     @Column(name = "phanTramGiam")
-    private String phanTramGiam;
+    private int phanTramGiam;
 
     @Column(name = "ngayBatDau")
     private String ngayBatDau;

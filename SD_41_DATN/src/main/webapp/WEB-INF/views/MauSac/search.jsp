@@ -4,14 +4,14 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <br>
-<form:form modelAttribute="searchKH" method="post" action="/KhachHang/list">
+<form:form modelAttribute="searchMS" method="post" action="/MauSac/list">
     <p>
             <%--        <lable>--%>
             <%--            Search:--%>
             <%--        </lable>--%>
         <form:input path="keyword"/>
         <button class="btn btn-primary" type="submit">Search</button>
-        <a href="${pageContext.request.contextPath}/KhachHang/list">
+        <a href="${pageContext.request.contextPath}/MauSac/list">
             <button class="btn btn-primary">Back</button>
         </a>
     </p>

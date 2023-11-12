@@ -7,8 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Khách hàng</title>
-    <%--    <link rel="icon" href="img/background_title.jpg" type="image/x-icon">--%>
+    <title>Cỡ Giầy</title>
     <style>
 
     </style>
@@ -134,15 +133,15 @@
 
 <body>
 <div class="container">
-    <h3 style="text-align: center;">List Khách Hàng </h3>
+    <h3 style="text-align: center;">List cổ giầy</h3>
     <br>
     <br>
     <input type="text" class="form-control bg-light border-0 small" placeholder="Tìm kiếm:" aria-label="Search"
            aria-describedby="basic-addon2">
 
-    <form action="${pageContext.request.contextPath}/KhachHang/search" method="GET">
+    <form action="${pageContext.request.contextPath}/CoGiay/search" method="GET">
         <%--        <label for="tenMauSac" style="margin-left: 30px">Tên màu sắc </label>--%>
-        <input style="width: 400px" type="text" id="tenKhachHang1" name="tenKhachHang">
+        <input style="width: 400px" type="text" id="tenCoGiay1" name="tenCoGiay">
         <%--        <br>--%>
         <button class="btn btn-primary" type="submit">Tìm kiếm</button>
         <h6 style="color: red; margin-top: 10px">${messageFindDone}</h6>
@@ -157,24 +156,22 @@
             <form id="filter-form">
                 <div class="row">
                     <div class="col-6">
-                        <h6 style="color:black">Tên khách hàng</h6>
-                        <input style="width: 500px; height: 35px;border-radius: 5px 5px 5px" type="text"
-                               id="tenKhachHang" placeholder="Tên khách hàng">
+                        <h6 style="color:black">Cổ giầy</h6>
+                        <select style="width: 500px;height: 35px; border-radius: 5px 5px 5px;margin-bottom: 0px"
+                                type="text" id="tenCoGiay">
+                            <option style="border-radius: 5px 5px 5px" value="">Tất cả tên cổ giầy</option>
+                            <c:forEach items="${tenCoGiay}" var="tenCoGiay">
+                                <option style="border-radius: 5px 5px 5px">${tenCoGiay.tenCoGiay}</option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div class="col-6">
-                        <h6 style="color:black">Email</h6>
-                        <input style="width: 500px; height: 35px;border-radius: 5px 5px 5px" type="text" id="email"
-                               placeholder="Email">
-                    </div>
-                    <div class="col-6">
-                        <h6 style="color:black">Số điện thoại</h6>
-                        <input style="width: 500px; height: 35px;border-radius: 5px 5px 5px" type="text"
-                               id="soDienThoai" placeholder="Số điện thoại">
-                    </div>
-                    <div class="col-6">
-                        <h6 style="color:black">Địa chỉ</h6>
-                        <input style="width: 500px; height: 35px;border-radius: 5px 5px 5px" type="text" id="diaChi"
-                               placeholder="Địa chỉ">
+                        <h6 style="color:black">Trạng thái</h6>
+                        <select id="trangThai" style="width: 500px;height: 35px; border-radius: 5px 5px 5px">
+                            <option value="" style="">All trạng thái ✔✖</option>
+                            <option value="1" style="">Đã kích hoạt ✔</option>
+                            <option value="0" style="">Chưa kích hoạt ✖</option>
+                        </select>
                     </div>
                 </div>
             </form>
@@ -187,10 +184,8 @@
     <br>
     <br>
 
-    <div><a href="${pageContext.request.contextPath}/KhachHang/view-create" class="btn btn-primary">Thêm sản phẩm</a>
-    </div>
-    <br>
-    <br>
+
+    <div><a href="${pageContext.request.contextPath}/CoGiay/view-create" class="btn btn-primary">Thêm cỡ giầy</a></div>
     <br>
     <br>
 
@@ -198,37 +193,24 @@
         <thead>
         <tr>
             <th scope="col">STT</th>
-            <th scope="col">Tên khách hàng</th>
-            <th scope="col">Email</th>
-            <th scope="col">Mật khẩu</th>
-            <th scope="col">Giới tính</th>
-            <th scope="col">Ngày sinh</th>
-            <th scope="col">Số điện thoại</th>
-            <th scope="col">Địa chỉ</th>
+            <th scope="col">Tên cổ giầy</th>
             <th scope="col">Ghi chú</th>
             <th scope="col">Trạng thái</th>
-            <th scope="col">Function</th>
+            <th scope="col">Functions</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="kh" items="${listPage}" varStatus="i">
-            <tr class="product-item hide-row" data-tenKhachHang="${kh.tenKhachHang}" data-email="${kh.email}"
-                data-soDienThoai="${kh.soDienThoai}" data-diaChi="${kh.diaChi}">
-                <th style="">${i.index+1}</th>
-                <td style="">${kh.tenKhachHang}</td>
-                <td style="">${kh.email}</td>
-                <td style="">${kh.matKhau}</td>
-                <td style="">${kh.gioiTinh}</td>
-                <td style="">${kh.ngaySinh}</td>
-                <td style="">${kh.soDienThoai}</td>
-                <td style="">${kh.diaChi}</td>
-                <td style="">${kh.ghiChu}</td>
-                <td style="">${kh.trangThai==1 ?"Còn hoạt động ✔" : "Không còn hoạt động ✖"}</td>
+        <c:forEach var="cg" items="${listPage}" varStatus="i">
+            <tr class="product-item hide-row" data-tenCoGiay="${cg.tenCoGiay}" data-trangThai="${cg.trangThai}">
+                <th style="" scope="row">${i.index+1}</th>
+                <td style="">${cg.tenCoGiay}</td>
+                <td style="">${cg.ghiChu}</td>
+                <td style="">${cg.trangThai==1 ?"✔" : "✖"}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/KhachHang/edit/${kh.id}">
+                    <a href="${pageContext.request.contextPath}/CoGiay/edit/${cg.id}">
                         <button class="btn btn-primary">Edit</button>
                     </a>
-                    <a href="${pageContext.request.contextPath}/KhachHang/delete/${kh.id}"
+                    <a href="${pageContext.request.contextPath}/CoGiay/delete/${cg.id}"
                        class="btn btn-danger">Delete</a>
                 </td>
             </tr>
@@ -298,7 +280,7 @@
                 <c:choose>
                     <c:when test="${currentPage > 1}">
                         <li class="page-item">
-                            <a href="/KhachHang/list?pageNum=${currentPage - 1}" class="page-link"
+                            <a href="/CoGiay/list?pageNum=${currentPage - 1}" class="page-link"
                                style="border: 1px solid red;width: 100px">Previous</a>
                         </li>
                     </c:when>
@@ -309,13 +291,13 @@
 
                 <c:forEach var="pageNumber" items="${pageNumbers}">
                     <li class="page-item ${pageNumber == currentPage}">
-                        <a href="/KhachHang/list?pageNum=${pageNumber}" class="page-link">${pageNumber}</a>
+                        <a href="/CoGiay/list?pageNum=${pageNumber}" class="page-link">${pageNumber}</a>
                     </li>
                 </c:forEach>
 
                 <c:if test="${currentPage < totalPage}">
                     <li class="page-item">
-                        <a href="/KhachHang/list?pageNum=${currentPage + 1}" class="page-link"
+                        <a href="/CoGiay/list?pageNum=${currentPage + 1}" class="page-link"
                            style="border: 1px solid red; width: 50px">Next</a>
                     </li>
                 </c:if>
@@ -337,59 +319,53 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
-    var filterForm = document.getElementById('filter-form');
-    var searchPerformed = false; // Tạo biến để kiểm tra xem tìm kiếm đã được thực hiện hay chưa
+    function filterProducts() {
+        // Lấy giá trị từ các trường input và select
+        var tenCoGiay = document.getElementById('tenCoGiay').value.toLowerCase();
+        var trangThai = document.getElementById('trangThai').value;
 
-    filterForm.addEventListener('input', function () {
-        var tenKhachHang = document.getElementById('tenKhachHang').value.toLowerCase();
-        var email = document.getElementById('email').value.toLowerCase();
-        var soDienThoai = document.getElementById('soDienThoai').value.toLowerCase();
-        var diaChi = document.getElementById('diaChi').value.toLowerCase();
-
+        // Lấy danh sách sản phẩm
         var products = document.getElementsByClassName('product-item');
+        var anyResults = false; // Biến kiểm tra có kết quả hay không
 
         for (var i = 0; i < products.length; i++) {
             var product = products[i];
+            var productTenCoGiay = product.getAttribute('data-tenCoGiay').toLowerCase();
+            var productTrangThai = product.getAttribute('data-trangThai');
 
-            var productTenKhachHang = product.getAttribute('data-tenKhachHang').toLowerCase();
-            var productEmail = product.getAttribute('data-email').toLowerCase();
-            var productSoDienThoai = product.getAttribute('data-soDienThoai').toLowerCase();
-            var productDiaChi = product.getAttribute('data-diaChi').toLowerCase();
+            // Kiểm tra xem sản phẩm phù hợp với bộ lọc hay không
+            if (
+                (trangThai === '' || productTrangThai === trangThai) &&
+                productTenCoGiay.includes(tenCoGiay)
 
-            if (productTenKhachHang.includes(tenKhachHang) &&
-                productEmail.includes(email) &&
-                productSoDienThoai.includes(soDienThoai) &&
-                productDiaChi.includes(diaChi)) {
-
-                product.classList.remove('hide-row'); // Loại bỏ lớp ẩn
-
+            ) {
+                // Hiển thị sản phẩm nếu nó phù hợp với bộ lọc
+                product.classList.remove('hide-row');
+                anyResults = true;
             } else {
-
-                product.classList.add('hide-row'); // Thêm lớp ẩn
-
+                // Ẩn sản phẩm nếu không phù hợp
+                product.classList.add('hide-row');
             }
         }
 
+        // Hiển thị hoặc ẩn thông báo không có kết quả
         var noResultsMessage = document.getElementById('noResults');
         if (anyResults) {
+
             noResultsMessage.style.display = 'none'; // Ẩn thông báo
+
         } else {
+
             noResultsMessage.style.display = 'block'; // Hiển thị thông báo
         }
-        // Đặt biến searchPerformed thành true khi người dùng thực hiện tìm kiếm
-        searchPerformed = true;
-
-    });
-
-    // Trước khi kích hoạt tìm kiếm, kiểm tra xem searchPerformed đã được thiết lập thành true hay chưa
-    if (!searchPerformed) {
-        var initialProducts = document.getElementsByClassName('product-item');
-        for (var i = 0; i < initialProducts.length; i++) {
-
-            initialProducts[i].classList.remove('hide-row'); // Loại bỏ lớp ẩn
-
-        }
     }
+
+    // Thêm sự kiện người nghe đầu vào và thay đổi cho tất cả các trường bộ lọc
+    document.getElementById('tenCoGiay').addEventListener('input', filterProducts);
+    document.getElementById('trangThai').addEventListener('change', filterProducts);
+
+    // Áp dụng bộ lọc ban đầu
+    filterProducts();
 
 
 </script>

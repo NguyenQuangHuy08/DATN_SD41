@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
@@ -18,6 +19,13 @@ public interface KhachHangRepository extends JpaRepository<KhachHang, UUID> {
     //Todo code check email and password
 
     KhachHang findByEmailAndMatKhau(String email,String matKhau);
+
+    @Query("select kh from KhachHang kh where kh.id = ?1")
+    KhachHang getKhachHangById(UUID id);
+
+    Page<KhachHang> findByTrangThai(int trangThai, Pageable pageable);
+
+    List<KhachHang> findByTenKhachHang(String tenKhachHang);
 
 //    KhachHang findById(UUID id);
 

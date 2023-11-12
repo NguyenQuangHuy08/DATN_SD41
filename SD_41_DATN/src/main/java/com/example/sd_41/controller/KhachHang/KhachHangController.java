@@ -24,6 +24,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -42,35 +43,61 @@ public class KhachHangController {
     @Autowired
     private GioHangRepository gioHangRepository;
 
-    @Data
-    public static class SearchKH{
-        String keyword;
-        String tenKhachHang;
-        String email;
-        String matKhau;
-        String gioiTinh;
-        String ngaySinh;
-        String soDienThoai;
-        String diaChi;
-    }
+    @GetMapping("/KhachHang/list")
+    public String listShowViewMauSac(Model model,
+                                     HttpSession session,
+                                     @RequestParam(name = "pageNum", required = false, defaultValue = "1") Integer pageNum,
+                                     @RequestParam(name = "pageSize", required = false, defaultValue = "5") Integer pageSize
+    ) {
 
-    @RequestMapping(value = "/KhachHang/list")
-    public String viewKhachHang(Model model,
-                                @RequestParam(name = "pageNumber", required = false, defaultValue = "1") Integer pageNumber,
-                                @RequestParam(name = "pageSize", required = false, defaultValue = "5") Integer pageSize,
-                                @ModelAttribute("searchKH") SearchKH searchKH)
-    {
-        List<KhachHang> listKH = khachHangRepository.findAll();
-        model.addAttribute("listKH", listKH);
-
-        Pageable pageable = PageRequest.of(pageNumber-1, pageSize);
-        Page<KhachHang> page = khachHangService.searchKH(searchKH.keyword, searchKH.tenKhachHang, searchKH.email, searchKH.matKhau, searchKH.gioiTinh, searchKH.ngaySinh, searchKH.soDienThoai, searchKH.diaChi, pageable);
-
+        //Todo code tab trạng thái và phân trang
+        Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
+        Page<KhachHang> page = khachHangRepository.findAll(pageable);
+        //listPage sẽ dùng cho trạng thái giầy thể thao kích hoạt hay chưa
         model.addAttribute("totalPage", page.getTotalPages());
         model.addAttribute("listPage", page.getContent());
 
+        List<Integer> pageNumbers = getPageNumbers(page, pageNum);
+        model.addAttribute("pageNumbers", pageNumbers);
+        model.addAttribute("currentPage", pageNum);
+
+
+        // Lấy danh sách giày thể thao từ cơ sở dữ liệu
+        List<KhachHang> listPageFind = khachHangRepository.findAll();
+        model.addAttribute("listPageFind", listPageFind);
+
         return "/KhachHang/list";
     }
+
+
+    private List<Integer> getPageNumbers(Page<?> page, int currentPage) {
+        List<Integer> pageNumbers = new ArrayList<>();
+        int totalPages = page.getTotalPages();
+        int startPage, endPage;
+
+        if (totalPages <= 5) {
+            startPage = 1;
+            endPage = totalPages;
+        } else {
+            if (currentPage <= 2) {
+                startPage = 1;
+                endPage = 5;
+            } else if (currentPage + 2 >= totalPages) {
+                startPage = totalPages - 4;
+                endPage = totalPages;
+            } else {
+                startPage = currentPage - 2;
+                endPage = currentPage + 2;
+            }
+        }
+
+        for (int i = startPage; i <= endPage; i++) {
+            pageNumbers.add(i);
+        }
+
+        return pageNumbers;
+    }
+
 
     //Todo code đăng ký tài khoản khách hàng
     @RequestMapping(value = "/KhachHang/view-create")
@@ -185,6 +212,48 @@ public class KhachHangController {
     public String delete(@PathVariable("id") KhachHang khachHang){
         khachHangRepository.delete(khachHang);
         return "redirect:/KhachHang/list";
+    }
+
+    @GetMapping("KhachHang/search")
+    public String searchCoGiay(@RequestParam(value = "tenKhachHang", required = false) String tenKhachHang, Model model) {
+        List<KhachHang> listPageFind;
+        if (tenKhachHang != null) {
+            listPageFind = khachHangService.findKhachHang(tenKhachHang);
+            model.addAttribute("listPageFind", listPageFind);
+            if (!listPageFind.isEmpty()) {
+                model.addAttribute("messageFindDone", "Tìm thấy dữ liệu");
+            } else {
+                model.addAttribute("messageFindError", "Không tìm thấy dữ liệu");
+            }
+        } else {
+            model.addAttribute("messageFind", "Bạn hãy nhập tên khách hàng muốn tìm kiếm!");
+        }
+        return "/KhachHang/list";
+    }
+
+    @ModelAttribute("tenKhachHang")
+    public List<KhachHang> getListTenKhachHang() {
+        return khachHangRepository.findAll();
+    }
+
+    @ModelAttribute("email")
+    public List<KhachHang> getListEmail() {
+        return khachHangRepository.findAll();
+    }
+
+    @ModelAttribute("gioiTinh")
+    public List<KhachHang> getListGioiTinh() {
+        return khachHangRepository.findAll();
+    }
+
+    @ModelAttribute("soDienThoai")
+    public List<KhachHang> getListSoDienThoai() {
+        return khachHangRepository.findAll();
+    }
+
+    @ModelAttribute("diaChi")
+    public List<KhachHang> getListDiaChi() {
+        return khachHangRepository.findAll();
     }
 
 

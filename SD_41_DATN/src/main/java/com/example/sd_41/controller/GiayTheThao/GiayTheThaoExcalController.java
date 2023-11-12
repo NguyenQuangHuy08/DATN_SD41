@@ -98,7 +98,7 @@ public class GiayTheThaoExcalController {
             cell.setCellStyle(style);
 
             cell = row.createCell(3);
-            cell.setCellValue(giayTheThaoChiTiet.getSize().getSize());
+            cell.setCellValue(giayTheThaoChiTiet.getSize().getSz());
             sheet.autoSizeColumn(3);
             cell.setCellStyle(style);
 

@@ -9,12 +9,20 @@
 </head>
 <body>
 <%@ include file="../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
-<form:form action="/Size/add" modelAttribute="size" cssClass="container">
+<form:form
+        action="/Size/add"
+        modelAttribute="Size"
+        method="post"
+        enctype="multipart/form-data"
+>
+
+
     <div class="form-group">
         <label>Size</label>
         <form:input path="size" class="form-control"/>
         <form:errors class="text-danger" element="span" path="size"/>
     </div>
+
 
     <div class="form-group">
         <label>Ghi Chú</label>

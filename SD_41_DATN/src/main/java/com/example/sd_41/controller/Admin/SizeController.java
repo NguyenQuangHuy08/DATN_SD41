@@ -24,25 +24,29 @@ import java.util.UUID;
 @RequestMapping("/Size")
 public class SizeController {
 
-        @Autowired
-        private SizeService sizeService;
-        @Autowired
-        private SizeRepository sizeRepository;
+    @Autowired
+    private SizeService sizeService;
+    @Autowired
+    private SizeRepository sizeRepository;
 
 
-        @GetMapping()
-        public String form(){
-            return "Size/index";
-        }
+    @GetMapping()
+    public String form() {
 
-        @GetMapping("/hien-thi")
-        public String hienThi(Model model, @RequestParam(name = "num",defaultValue = "0") Integer num) {
-            Page<Size> sizePage = sizeRepository.findAll(PageRequest.of(num,3));
-            model.addAttribute("list", sizePage.getContent());
-            model.addAttribute("next",num);
-            model.addAttribute("totalPages", sizePage.getTotalPages());
-            return "/Size/index";
-        }
+        return "Size/index";
+
+    }
+
+    @GetMapping("/hien-thi")
+    public String hienThi(Model model, @RequestParam(name = "num", defaultValue = "0") Integer num) {
+
+        Page<Size> sizePage = sizeRepository.findAll(PageRequest.of(num, 3));
+        model.addAttribute("list", sizePage.getContent());
+        model.addAttribute("next", num);
+        model.addAttribute("totalPages", sizePage.getTotalPages());
+        return "/Size/index";
+
+    }
 //        @GetMapping("/search")
 //        public String searchBySize(@RequestParam("size") Integer size, Model model) {
 //            List<Size> searchResults = sizeService.searchBySize(size);
@@ -50,46 +54,58 @@ public class SizeController {
 //            return "/Size/index";
 //        }
 
-        @GetMapping("/view-add")
-        public String viewadd(Model model){
-            model.addAttribute("size",new Size());
-            return "Size/view-add";
-        }
+    @GetMapping("/view-add")
+    public String viewadd(Model model) {
 
-        @PostMapping("/add")
-        public String add(@ModelAttribute("size") @Valid Size size,
-                          BindingResult bindingResult,
-                          Model model){
-
-            if(bindingResult.hasErrors()){
-                model.addAttribute("size",size);
-                return "/Size/view-add";
-            }else {
-                int size1 = Integer.parseInt(size.getSize());
-
-                size.setSize(Integer.toString(size1));
-                sizeService.save(size);
-                return "redirect:/Size/hien-thi";
-            }
-        }
-
-        @GetMapping("/delete/{id}")
-        public String delete(@PathVariable UUID id){
-            sizeService.delete(id);
-            return "redirect:/Size/hien-thi";
-        }
-
-        @GetMapping("/detail/{id}")
-        public String detail(@PathVariable UUID id, Model model){
-            Size size = sizeService.getOne(id);
-            model.addAttribute("size",size);
-            return "Size/detail";
-        }
-
-        @PostMapping("/update/{id}")
-        public String update(@PathVariable("id") UUID id,Size size){
-            sizeService.save(size);
-            return "redirect:/Size/hien-thi";
-        }
+        model.addAttribute("Size", new Size());
+        return "Size/view-add";
 
     }
+
+    @PostMapping("/add")
+    public String add(
+            @Valid
+            @ModelAttribute("Size") Size size,
+            BindingResult bindingResult,
+            Model model) {
+
+        if (bindingResult.hasErrors()) {
+
+            System.out.println("Size đang bị lỗi hãy check lại dữ liệu");
+            model.addAttribute("Size", size);
+            return "/Size/view-add";
+
+        } else {
+
+            sizeService.save(size);
+            return "redirect:/Size/hien-thi";
+
+        }
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable UUID id) {
+        sizeService.delete(id);
+        return "redirect:/Size/hien-thi";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable UUID id, Model model) {
+
+        Size size = sizeService.getOne(id);
+        model.addAttribute("Size", size);
+        return "Size/detail";
+    }
+
+    @GetMapping("/update/{id}")
+    public String showFormEdit(Model model,
+                               @PathVariable UUID id){
+
+        model.addAttribute("Size",sizeRepository.findById(id).orElse(null));
+        return "Size/detail";
+
+    }
+
+
+
+}

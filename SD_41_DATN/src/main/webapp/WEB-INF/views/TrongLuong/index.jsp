@@ -25,6 +25,7 @@
     <br>
     <br>
     <form action="/trongLuong/search" method="get">
+        <label>Tìm kiếm:</label>
         <input type="text" style="width: 400px" name="tenTrongLuong">
         <button type="submit" class="btn btn-info btn-sm">Tìm kiếm</button>
     </form>
@@ -36,7 +37,6 @@
         <thead>
         <tr>
             <th>STT</th>
-            <th>Id</th>
             <th>Tên trọng Lượng</th>
             <th>Ngày tạo</th>
             <th>Ngày sửa</th>
@@ -49,7 +49,6 @@
         <c:forEach items="${list}" var="d" varStatus="i">
             <tr>
                 <th>${i.index+1}</th>
-                <td>${d.id}</td>
                 <td>${d.tenTrongLuong}</td>
                 <td>${d.ngayTao}</td>
                 <td>${d.ngaySua}</td>

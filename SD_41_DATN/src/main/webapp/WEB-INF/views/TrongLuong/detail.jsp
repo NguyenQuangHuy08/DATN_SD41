@@ -9,12 +9,32 @@
 </head>
 <body>
 <%@ include file="../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
-<form:form action="/trongLuong/update/${id}" modelAttribute="trongLuong" cssClass="container">
+<form:form
+        modelAttribute="Size"
+        action="${pageContext.request.contextPath}/Size/add"
+        method="POST"
+        enctype="multipart/form-data"
+>
+
     <div class="form-group">
-        <label>Tên trọng lượng</label>
-        <form:input path="tenTrongLuong" class="form-control"/>
-        <form:errors class="text-danger" element="span" path="tenTrongLuong"/>
+        <form:hidden path="id" value="${Size.id}"/>
     </div>
+
+    <div class="form-group">
+        <label>Size</label>
+        <form:input path="size" class="form-control"/>
+        <form:errors class="text-danger" element="span" path="size"/>
+    </div>
+
+<%--    <div class="form-group">--%>
+<%--        <form:hidden path="id" value="${Size.id}"/>--%>
+<%--    </div>--%>
+
+<%--    <div class="form-group">--%>
+<%--        <label>Size</label>--%>
+<%--        <form:input path="size" class="form-control"/>--%>
+<%--        <form:errors class="text-danger" element="span" path="size"/>--%>
+<%--    </div>--%>
 
     <div class="form-group">
         <label>Ghi Chú</label>

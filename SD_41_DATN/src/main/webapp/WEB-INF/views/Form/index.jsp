@@ -37,7 +37,6 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Id</th>
                 <th>Tên form</th>
                 <th>Ngày tạo</th>
                 <th>Ngày sửa</th>
@@ -50,7 +49,6 @@
             <c:forEach items="${list}" var="d" varStatus="i">
                 <tr>
                     <th>${i.index+1}</th>
-                    <td>${d.id}</td>
                     <td>${d.tenForm}</td>
                     <td>${d.ngayTao}</td>
                     <td>${d.ngaySua}</td>

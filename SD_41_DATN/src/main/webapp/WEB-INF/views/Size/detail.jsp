@@ -9,7 +9,17 @@
 </head>
 <body>
 <%@ include file="../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
-<form:form action="/Size/update/${id}" modelAttribute="size" cssClass="container">
+<form:form
+        modelAttribute="Size"
+        action="${pageContext.request.contextPath}/Size/add"
+        method="POST"
+        enctype="multipart/form-data"
+>
+
+    <div class="form-group">
+        <form:hidden path="id" value="${Size.id}"/>
+    </div>
+
     <div class="form-group">
         <label>Size</label>
         <form:input path="size" class="form-control"/>
@@ -43,7 +53,7 @@
         </div>
     </div>
 
-    <button class="btn btn-success">Add</button>
+    <button type="submit" class="btn btn-success">Add</button>
     </div>
 
 

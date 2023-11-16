@@ -38,7 +38,6 @@
             <thead>
             <tr>
                 <th>STT</th>
-                <th>Id</th>
                 <th>Tên kiểu buộc</th>
                 <th>Ngày tạo</th>
                 <th>Ngày sửa</th>
@@ -51,7 +50,6 @@
             <c:forEach items="${list}" var="d" varStatus="i">
                 <tr>
                     <th>${i.index+1}</th>
-                    <td>${d.id}</td>
                     <td>${d.tenKieuBuoc}</td>
                     <td>${d.ngayTao}</td>
                     <td>${d.ngaySua}</td>

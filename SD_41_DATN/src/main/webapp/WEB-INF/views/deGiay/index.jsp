@@ -43,8 +43,9 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
     </style>
   </head>
   <body>
-    <h1 style="line-height: 100px; text-align: center; color: red">Đế giày</h1>
+  <%@ include file="../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
     <div class="container">
+      <h1 style="line-height: 100px; text-align: center; color: red">Đế giày</h1>
       <div class="search-container">
         <form action="${pageContext.request.contextPath}/deGiay/search">
           <input
@@ -117,5 +118,6 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
         >
       </p>
     </section>
+  <%@ include file="../templates/Admin/Layouts/GiayTheThao/_FooterGiayTheThao.jsp" %>
   </body>
 </html>

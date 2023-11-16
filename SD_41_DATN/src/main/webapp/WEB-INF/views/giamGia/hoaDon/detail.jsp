@@ -52,6 +52,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
   </head>
 
   <body class="container-fluid">
+  <%@ include file="../../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
     <section>
       <div class="btn-back">
         <button class="btn btn-primary" onclick="goBack()">
@@ -153,7 +154,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         </tbody>
       </table>
     </section>
-
+  <%@ include file="../../templates/Admin/Layouts/GiayTheThao/_FooterGiayTheThao.jsp" %>
     <script>
       function goBack() {
         window.history.back();

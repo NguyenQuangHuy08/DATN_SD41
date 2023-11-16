@@ -8,37 +8,34 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Trọng Lượng</h1>
-<div>
+<%@ include file="../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
+<div class="container">
+    <h1>Trọng Lượng</h1>
     <div>
         <h6 style="color:black;margin-top: 10px">Trạng thái</h6>
         <select id="trangThai" style="width: 500px;height: 35px; border-radius: 5px 5px 5px">
-            <option value="" style="">Tất cả trạng thái </option>
-            <option value="1" style="">Đã kích hoạt </option>
-            <option value="0" style="">Chưa kích hoạt </option>
+            <option value="" style="">Tất cả trạng thái</option>
+            <option value="1" style="">Đã kích hoạt</option>
+            <option value="0" style="">Chưa kích hoạt</option>
         </select>
 
         <br>
         </form>
     </div>
-</div>
-</div>
-<br>
-<br>
-<form action="/trongLuong/search" method="get">
-    <label>Tìm kiếm:</label>
-    <input type="text" name="tenTrongLuong">
-    <button type="submit" class="btn btn-info btn-sm" >Tìm kiếm</button>
-</form>
-<br>
-<a href="/trongLuong/view-add" class="btn btn-info btn-sm"> Add </a>
-<br>
-<br>
-<div>
+    <br>
+    <br>
+    <form action="/trongLuong/search" method="get">
+        <input type="text" style="width: 400px" name="tenTrongLuong">
+        <button type="submit" class="btn btn-info btn-sm">Tìm kiếm</button>
+    </form>
+    <br>
+    <button type="button" class="btn btn-info"><a href="/trongLuong/view-add"> Add </a></button>
+    <br>
+    <br>
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
+            <th>STT</th>
             <th>Id</th>
             <th>Tên trọng Lượng</th>
             <th>Ngày tạo</th>
@@ -78,7 +75,8 @@
                 </c:if>
             </li>
             <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-                <li class="page-item"><a class="page-link" href="/trongLuong/hien-thi?num=${loop.index - 1}">${loop.index}</a></li>
+                <li class="page-item"><a class="page-link"
+                                         href="/trongLuong/hien-thi?num=${loop.index - 1}">${loop.index}</a></li>
             </c:forEach>
             <li class="page-item">
                 <c:if test="${!trongLuongPage.last && next < totalPages - 1}">
@@ -88,6 +86,9 @@
         </ul>
     </nav>
 </div>
+</div>
 
+
+<%@ include file="../templates/Admin/Layouts/GiayTheThao/_FooterGiayTheThao.jsp" %>
 </body>
 </html>

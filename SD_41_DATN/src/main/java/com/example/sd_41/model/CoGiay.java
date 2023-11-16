@@ -34,4 +34,5 @@ public class CoGiay {
     @Column(name = "trangThai")
     private int trangThai;
 
+
 }

@@ -19,29 +19,22 @@ import java.util.UUID;
 public class Size {
 
     @Id
-    @GenericGenerator(name = "generator",strategy = "guid",parameters = {})
-    @GeneratedValue(generator = "generator")
-    @Column(name = "Id_Size",columnDefinition = "UNIQUEIDENTIFIER")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "Id_Size")
+    private UUID id;
 
-    //    @NotEmpty(message = "không được trống")
-//    @NotBlank(message = "Không được để trống")
     @Column(name = "size")
-    private  int sz;
+    private String size;
 
-    @NotBlank(message = "Không được để trống")
     @Column(name = "ghiChu")
     private String ghiChu;
 
-    @NotBlank(message = "Không được để trống")
     @Column(name = "ngayTao")
     private String ngayTao;
 
-    @NotBlank(message = "Không được để trống")
     @Column(name = "ngaySua")
     private String ngaySua;
 
-    @NotBlank(message = "Không được để trống")
     @Column(name = "trangThai")
-    private String trangThai;
+    private int trangThai;
 }

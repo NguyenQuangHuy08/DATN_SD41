@@ -132,7 +132,9 @@
 </style>
 
 <body>
+<%@ include file="../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
 <div class="container">
+
     <h3 style="text-align: center;">List cổ giầy</h3>
     <br>
     <br>
@@ -307,6 +309,7 @@
         </div>
     </div>
 </div>
+<%@ include file="../templates/Admin/Layouts/GiayTheThao/_FooterGiayTheThao.jsp" %>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>

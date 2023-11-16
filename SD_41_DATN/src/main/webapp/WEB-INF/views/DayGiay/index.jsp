@@ -8,6 +8,7 @@
     <title>Title</title>
 </head>
 <body>
+<%@ include file="../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
 <h1>Dây giày</h1>
 <div>
     <div>
@@ -88,6 +89,6 @@
         </ul>
     </nav>
 </div>
-
+<%@ include file="../templates/Admin/Layouts/GiayTheThao/_FooterGiayTheThao.jsp" %>
 </body>
 </html>

@@ -76,7 +76,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
   </head>
 
   <body class="container-fluid">
-    
+  <%@ include file="../../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
     <section>
       
       <div >
@@ -154,8 +154,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         </ul>
       </div>
     </section>
-
-
+  <%@ include file="../../templates/Admin/Layouts/GiayTheThao/_FooterGiayTheThao.jsp" %>
     <script>
       function goBack() {
         window.history.back();

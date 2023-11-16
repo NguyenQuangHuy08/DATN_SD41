@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class SizeService {
@@ -16,7 +17,7 @@ public class SizeService {
         return sizeRepository.findAll();
     }
 
-    public Size getOne(String id) {
+    public Size getOne(UUID id) {
         return sizeRepository.findById(id).orElse(null);
     }
 
@@ -24,7 +25,7 @@ public class SizeService {
         this.sizeRepository.save(size);
     }
 
-    public void delete(String id) {
+    public void delete(UUID id) {
         this.sizeRepository.deleteById(id);
     }
 

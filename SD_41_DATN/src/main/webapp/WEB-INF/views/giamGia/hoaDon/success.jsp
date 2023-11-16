@@ -30,6 +30,7 @@
 </head>
 
 <body class="container-fluid">
+<%@ include file="../../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
     <div>
         <a
                 href="${pageContext.request.contextPath}/chuongTrinhGiamGia/hoaDon"
@@ -40,5 +41,6 @@
     <div id="success">
         <h3>Thêm thành công</h3>
     </div>
+<%@ include file="../../templates/Admin/Layouts/GiayTheThao/_FooterGiayTheThao.jsp" %>
 </body>
 </html>

@@ -96,13 +96,24 @@
 
                     <div class="collapse-divider"></div>
                     <h4 class="collapse-header" style="color: black; font-weight: bold; font-size: 15px">Other pages:</h4>
-                    <a class="collapse-item" href="#">Sản phẩm</a>
-                    <a class="collapse-item" href="#">Màu sắc</a>
-                    <a class="collapse-item" href="#">Size</a>
+                    <a class="collapse-item" href="/KhachHang/list">Khách hàng</a>
+                    <a class="collapse-item" href="/GiayTheThao/listGiayTheThao">Sản phẩm</a>
+                    <a class="collapse-item" href="/MauSac/list">Màu sắc</a>
+                    <a class="collapse-item" href="/Size/hien-thi">Size</a>
+                    <a class="collapse-item" href="/CoGiay/list">Cổ giầy</a>
+                    <a class="collapse-item" href="/kieuBuoc/hien-thi">Kiểu buộc</a>
+                    <a class="collapse-item" href="/chatLieu/hien-thi">Chất liệu</a>
+                    <a class="collapse-item" href="/congDung/hien-thi">Công dụng</a>
+                    <a class="collapse-item" href="/dayGiay/hien-thi">Dây giầy</a>
+                    <a class="collapse-item" href="/deGiay">Đế giày</a>
+                    <a class="collapse-item" href="/dinhTanGiay/hien-thi">Đinh tán giầy</a>
+                    <a class="collapse-item" href="/thuongHieu">Thương hiệu</a>
+                    <a class="collapse-item" href="/trongLuong">Trọng lượng</a>
+                    <a class="collapse-item" href="/Size/hien-thi">Size</a>
                     <a class="collapse-item" href="#">Môn thể thao</a>
                     <a class="collapse-item" href="#">Chất liệu</a>
                     <a class="collapse-item" href="#">Loại sản phẩm</a>
-                    <a class="collapse-item" href="#">Khuyến mại</a>
+                    <a class="collapse-item" href="/chuongTrinhGiamGia/sanPham">Khuyến mại</a>
                     <a class="collapse-item" href="#">Hình thức thanh toán</a>
                 </div>
             </div>

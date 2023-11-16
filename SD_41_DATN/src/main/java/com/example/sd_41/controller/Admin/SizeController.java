@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.UUID;
+
 @Controller
 @RequestMapping("/Size")
 public class SizeController {
@@ -63,26 +65,29 @@ public class SizeController {
                 model.addAttribute("size",size);
                 return "/Size/view-add";
             }else {
+                int size1 = Integer.parseInt(size.getSize());
+
+                size.setSize(Integer.toString(size1));
                 sizeService.save(size);
                 return "redirect:/Size/hien-thi";
             }
         }
 
         @GetMapping("/delete/{id}")
-        public String delete(@PathVariable String id){
+        public String delete(@PathVariable UUID id){
             sizeService.delete(id);
             return "redirect:/Size/hien-thi";
         }
 
         @GetMapping("/detail/{id}")
-        public String detail(@PathVariable String id, Model model){
+        public String detail(@PathVariable UUID id, Model model){
             Size size = sizeService.getOne(id);
             model.addAttribute("size",size);
             return "Size/detail";
         }
 
         @PostMapping("/update/{id}")
-        public String update(@PathVariable("id") String id,Size size){
+        public String update(@PathVariable("id") UUID id,Size size){
             sizeService.save(size);
             return "redirect:/Size/hien-thi";
         }

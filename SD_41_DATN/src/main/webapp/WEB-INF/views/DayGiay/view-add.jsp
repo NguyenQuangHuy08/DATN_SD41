@@ -7,8 +7,9 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Title</title>
 </head>
-<body class="container">
-<form:form action="/dayGiay/add" modelAttribute="dayGiay">
+<body>
+<%@ include file="../templates/Admin/Layouts/GiayTheThao/_HeaderGiayTheThao.jsp" %>
+<form:form action="/dayGiay/add" modelAttribute="dayGiay" cssClass="container">
     <div class="form-group">
         <label>Tên dây giày</label>
         <form:input path="tenDayGiay" class="form-control"/>
@@ -49,5 +50,6 @@
 
 
 </form:form>
+<%@ include file="../templates/Admin/Layouts/GiayTheThao/_FooterGiayTheThao.jsp" %>
 </body>
 </html>

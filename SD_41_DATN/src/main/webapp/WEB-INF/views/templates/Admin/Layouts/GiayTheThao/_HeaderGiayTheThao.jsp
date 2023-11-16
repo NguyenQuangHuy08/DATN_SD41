@@ -69,7 +69,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="width: 1000px">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
@@ -91,15 +91,6 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header" style="color: black; font-size: 13px;">Pages</h6>
-                    <a class="collapse-item" href="/GiayTheThao/listGiayTheThao">Giầy thể thao</a>
-                    <a class="collapse-item" href="/GiayTheThao/listGiayTheThao">Image</a>
-
-                    <div class="collapse-divider"></div>
-                    <h4 class="collapse-header" style="color: black; font-weight: bold; font-size: 15px">Other pages:</h4>
-                    <a class="collapse-item" href="/KhachHang/list">Khách hàng</a>
-                    <a class="collapse-item" href="/GiayTheThao/listGiayTheThao">Sản phẩm</a>
-                    <a class="collapse-item" href="/MauSac/list">Màu sắc</a>
-                    <a class="collapse-item" href="/Size/hien-thi">Size</a>
                     <a class="collapse-item" href="/CoGiay/list">Cổ giầy</a>
                     <a class="collapse-item" href="/kieuBuoc/hien-thi">Kiểu buộc</a>
                     <a class="collapse-item" href="/chatLieu/hien-thi">Chất liệu</a>
@@ -108,13 +99,16 @@
                     <a class="collapse-item" href="/deGiay">Đế giày</a>
                     <a class="collapse-item" href="/dinhTanGiay/hien-thi">Đinh tán giầy</a>
                     <a class="collapse-item" href="/thuongHieu">Thương hiệu</a>
-                    <a class="collapse-item" href="/trongLuong">Trọng lượng</a>
-                    <a class="collapse-item" href="/Size/hien-thi">Size</a>
+                    <a class="collapse-item" href="/trongLuong/hien-thi">Trọng lượng</a>
+                    <a class="collapse-item" href="/form/hien-thi">Form</a>
                     <a class="collapse-item" href="#">Môn thể thao</a>
                     <a class="collapse-item" href="#">Chất liệu</a>
                     <a class="collapse-item" href="#">Loại sản phẩm</a>
+                    <a class="collapse-item" href="/HuongDanBaoQuan/list">Hướng dẫn bảo quản</a>
+                    <div class="collapse-divider"></div>
+                    <h4 class="collapse-header" style="color: black; font-weight: bold; font-size: 15px">Other pages:</h4>
+
                     <a class="collapse-item" href="/chuongTrinhGiamGia/sanPham">Khuyến mại</a>
-                    <a class="collapse-item" href="#">Hình thức thanh toán</a>
                 </div>
             </div>
 
@@ -132,16 +126,32 @@
                     <h6 class="collapse-header">User:</h6>
                     <a class="collapse-item" href="/addAccountUser">Nhân viên</a>
 
+                    <a class="collapse-item" href="/KhachHang/list">Khách hàng</a>
 
 
                     <%--                    <a class="collapse-item" href="/authentication/enregistrer">Register</a>--%>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other User:</h6>
-                    <%--                    <a class="collapse-item" href="/404">Login</a>--%>
+                    <a class="collapse-item" href="/GiayTheThao/listGiayTheThao">Giầy thể thao</a>
+                    <a class="collapse-item" href="/GiayTheThao/listGiayTheThao">Image</a>
+                    <a class="collapse-item" href="/MauSac/list">Màu sắc</a>
+                    <a class="collapse-item" href="/Size/hien-thi">Size</a>
+
+                <%--                    <a class="collapse-item" href="/404">Login</a>--%>
                 </div>
             </div>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="/403">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Charts</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/403">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Tables</span></a>
+        </li>
     </ul>
     <!-- The end code nav -->
     <!-- Content Wrapper -->

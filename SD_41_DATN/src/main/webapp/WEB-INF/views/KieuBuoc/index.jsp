@@ -25,8 +25,7 @@
     <br>
     <br>
     <form action="/kieuBuoc/search" method="get">
-        <label>Tìm kiếm:</label>
-        <input type="text" name="tenKieuBuoc">
+        <input style="width: 400px" type="text" name="tenKieuBuoc">
         <button type="submit" class="btn btn-info btn-sm">Tìm kiếm</button>
     </form>
     <br>

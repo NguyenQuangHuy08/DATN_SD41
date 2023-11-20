@@ -167,6 +167,9 @@
                         <input style="width: 500px; height: 35px;border-radius: 5px 5px 5px" type="text" id="email"
                                placeholder="Email">
                     </div>
+                    <br>
+                    <br>
+                    <br>
                     <div class="col-6">
                         <h6 style="color:black">Số điện thoại</h6>
                         <input style="width: 500px; height: 35px;border-radius: 5px 5px 5px" type="text"

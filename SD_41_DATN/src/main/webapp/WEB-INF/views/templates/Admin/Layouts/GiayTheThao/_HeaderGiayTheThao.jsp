@@ -97,18 +97,22 @@
                     <a class="collapse-item" href="/congDung/hien-thi">Công dụng</a>
                     <a class="collapse-item" href="/dayGiay/hien-thi">Dây giầy</a>
                     <a class="collapse-item" href="/deGiay">Đế giày</a>
+                    <a class="collapse-item" href="/LotGiay/list">Lót giầy</a>
                     <a class="collapse-item" href="/dinhTanGiay/hien-thi">Đinh tán giầy</a>
                     <a class="collapse-item" href="/thuongHieu">Thương hiệu</a>
                     <a class="collapse-item" href="/trongLuong/hien-thi">Trọng lượng</a>
                     <a class="collapse-item" href="/form/hien-thi">Form</a>
+
                     <a class="collapse-item" href="#">Môn thể thao</a>
-                    <a class="collapse-item" href="#">Chất liệu</a>
+                    <a class="collapse-item" href="/chatLieu/hien-thi">Chất liệu</a>
                     <a class="collapse-item" href="#">Loại sản phẩm</a>
                     <a class="collapse-item" href="/HuongDanBaoQuan/list">Hướng dẫn bảo quản</a>
                     <div class="collapse-divider"></div>
                     <h4 class="collapse-header" style="color: black; font-weight: bold; font-size: 15px">Other pages:</h4>
 
-                    <a class="collapse-item" href="/chuongTrinhGiamGia/sanPham">Khuyến mại</a>
+                    <a class="collapse-item" href="/chuongTrinhGiamGia/sanPham">Giảm giá sản phẩm</a>
+                    <a class="collapse-item" href="/chuongTrinhGiamGia/hoaDon">Giảm giá hóa đơn</a>
+                    <a class="collapse-item" href="/PhieuGiaoHang/listPhieuGiaoHang">Phiếu giao hàng</a>
                 </div>
             </div>
 

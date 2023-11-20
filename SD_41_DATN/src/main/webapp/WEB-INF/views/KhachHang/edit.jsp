@@ -28,7 +28,7 @@
                 method="POST"
                 enctype="multipart/form-data">
             <div class="form-group">
-                <frm:hidden path="id" value="${khachHang.id}"/>
+                <frm:hidden path="id" value="${khachHang.id}" ></frm:hidden>
             </div>
             <div class="row">
                 <div class="col-6">

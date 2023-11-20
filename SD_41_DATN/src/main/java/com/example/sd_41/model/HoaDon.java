@@ -23,7 +23,7 @@ public class HoaDon {
     private KhachHang kh;
 
     @ManyToOne
-    @JoinColumn(name = "Id_Users", referencedColumnName = "Id_User")
+    @JoinColumn(name = "Id_User", referencedColumnName = "Id_User")
     private User user;
 
     @Column(name = "ThanhTien")
